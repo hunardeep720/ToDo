@@ -7,7 +7,9 @@ export const List = ({ tasks }) => {
     <ScrollView>
       <View>
         {tasks.map((task, index) => (
-          <Text key={index} style={styles.taskText}>&#8226; {task}</Text>
+          <Text key={index} style={styles.taskText}>
+            &#8226; {task}
+          </Text>
         ))}
       </View>
     </ScrollView>
