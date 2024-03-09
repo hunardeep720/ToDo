@@ -1,4 +1,4 @@
-import React from "react";
+import { React, useState } from "react";
 import {
   SafeAreaView,
   StyleSheet,
@@ -10,9 +10,10 @@ import { List } from "./TodoList";
 import { Form } from "./ToDoForm";
 
 function App() {
+  let [list, setList] = useState(["Do laundry", "Go to gym", "Walk dog"]);
   return (
     <SafeAreaView>
-      <List />
+      <List tasks={list} />
       <Form />
     </SafeAreaView>
   );
