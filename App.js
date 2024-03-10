@@ -2,19 +2,25 @@ import { React, useState } from "react";
 import {
   SafeAreaView,
   StyleSheet,
-  View,
-  TextInput,
-  Button,
 } from "react-native";
 import { List } from "./TodoList";
 import { Form } from "./ToDoForm";
 
 function App() {
   let [list, setList] = useState(["Do laundry", "Go to gym", "Walk dog"]);
+  let [list1, setList1] = useState(["DO LAUNDRY", "GO TO GYM", "WALK DOG"]);
+  const addTask = (task) => {
+    if(!list1.includes(task.toUpperCase())){
+      setList1([...list1, task.toUpperCase()]);
+      setList([...list, task]);
+    }
+    // list1.includes(task.toUpperCase()) ? null : setList([...list, task]);
+    
+  };
   return (
     <SafeAreaView>
       <List tasks={list} />
-      <Form />
+      <Form addTask={addTask}/>
     </SafeAreaView>
   );
 }
