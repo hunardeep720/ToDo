@@ -1,27 +1,21 @@
-import { React, useState } from "react";
-import {
-  SafeAreaView,
-  StyleSheet,
-} from "react-native";
-import { List } from "./TodoList";
-import { Form } from "./ToDoForm";
+import { NavigationContainer } from "@react-navigation/native";
+import { createStackNavigator } from "@react-navigation/stack";
+import { React } from "react";
+import HomeScreen from "./screens/HomeScreen";
+import AboutScreen from "./screens/AboutScreen";
+import { StyleSheet } from "react-native";
+import { createDrawerNavigator } from "@react-navigation/drawer";
 
 function App() {
-  let [list, setList] = useState(["Do laundry", "Go to gym", "Walk dog"]);
-  let [list1, setList1] = useState(["DO LAUNDRY", "GO TO GYM", "WALK DOG"]);
-  const addTask = (task) => {
-    if(!list1.includes(task.toUpperCase())){
-      setList1([...list1, task.toUpperCase()]);
-      setList([...list, task]);
-    }
-    // list1.includes(task.toUpperCase()) ? null : setList([...list, task]);
-    
-  };
+  const Drawer = createDrawerNavigator();
   return (
-    <SafeAreaView>
-      <List tasks={list} />
-      <Form addTask={addTask}/>
-    </SafeAreaView>
+    <NavigationContainer>
+      <Drawer.Navigator >
+        <Drawer.Screen name="Home" component={HomeScreen} />
+        <Drawer.Screen name="About" component={AboutScreen} />
+      </Drawer.Navigator>
+    </NavigationContainer>
+    
   );
 }
 
